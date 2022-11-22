@@ -1,1 +1,1 @@
-# donutello-gallery
+# Donutello Gallery
