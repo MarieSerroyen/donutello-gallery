@@ -21,7 +21,8 @@
             if(data.status === "success") {
                 let token = data.data.token
                 localStorage.setItem("token", token)
-                console.log(token)
+                
+                window.location.href = "index.html"
             }
             if (data.status === "error") {
                 console.log(data.message)
