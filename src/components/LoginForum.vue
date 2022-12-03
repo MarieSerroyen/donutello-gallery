@@ -1,6 +1,8 @@
 <script setup>
 
-
+    const login = () => {
+        console.log('login')
+    }
 
 </script>
 
@@ -15,7 +17,7 @@
             <label class="login__label" for="password">Wachtwoord</label>
             <input class="login__input" type="password" id="password" v-model="password" required>
 
-            <button class="login__button" type="submit">Inloggen</button>
+            <button class="login__button" type="submit" @click="login">Inloggen</button>
         </form>
     </div>
  
