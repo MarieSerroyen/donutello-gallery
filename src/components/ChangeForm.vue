@@ -7,6 +7,20 @@
     <div class="password">
         <h1 class="password_title">Wijzig wachtwoord</h1>
 
+        <form class="password__form">
+            <label class="password__label" for="old_password">Oud wachtwoord</label>
+            <input class="password__input" type="password" id="old_password" v-model="old_password" required>
+
+            <label class="password__label" for="new_password">Nieuw wachtwoord</label>
+            <input class="password__input" type="password" id="new_password" v-model="new_password" required>
+
+            <label class="password__label" for="confirm_password">Nieuw wachtwoord bevestigen</label>
+            <input class="password__input" type="password" id="confirm_password" v-model="confirm_password" required>
+            
+            <p class="form__error" id="error">{{ error }}</p>
+
+            <button class="password__button" type="submit" @click.prevent="changePassword">Wijzigen</button>
+        </form>
         
     </div>
  
