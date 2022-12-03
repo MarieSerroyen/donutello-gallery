@@ -22,7 +22,13 @@
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            console.log(data)
+            if(data.status === "success") {                
+                window.location.href = "index.html"
+            }
+            if (data.status === "error") {
+                error.value = data.message;
+            }
         })    
     }
 </script>
