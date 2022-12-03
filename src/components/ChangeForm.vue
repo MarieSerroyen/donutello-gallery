@@ -1,11 +1,17 @@
 <script setup>
-    import {ref} from 'vue'
+    import {ref, onMounted} from 'vue'
 
     let old_password = ref('');
     let new_password = ref('');
     let confirm_password = ref('');
     let error = ref('');
 
+    onMounted (() => {
+        let token = localStorage.getItem("token")
+        if (!token) {
+            window.location.href = "login.html"
+        }
+    })
 
     const changePassword = () => {
         fetch("https://donuttello-api-team6.onrender.com/api/v1/users/6389bb98c20e61e4f2ba40f2", {
