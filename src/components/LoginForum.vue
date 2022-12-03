@@ -1,7 +1,12 @@
 <script setup>
+    import {ref} from 'vue'
+
+    let mail = ref('');
+
 
     const login = () => {
-        console.log('login')
+        console.log(mail.value)
+
     }
 
 </script>
