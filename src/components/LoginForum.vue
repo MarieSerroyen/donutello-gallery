@@ -35,13 +35,15 @@
     .login__label {
         font-size: 1.2rem;
         margin-top: 2rem;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
     .login__input {
         border: none;
         border-bottom: 2px solid #E72870;
+        font-size: 1.2rem;
         width: 100%;
+        height: 40px;
         margin-bottom: 20px;
     }
 
