@@ -4,12 +4,8 @@
 </script>
 
 <template>
-    <!--<div>
-        <Navigation/>
-    </div>-->
-    <div>
-        <ChangeForm/>
-    </div>
+    <Navigation/>
+    <ChangeForm/>
     
 
 </template>
