@@ -6,8 +6,8 @@ import { ref } from 'vue'
 <template>
     <h1>Bestellingen</h1>
     <div class="controls">
-        <a href="#">Nieuwste eerst</a>
-        <a href="#">Oudste eerst</a>
+        <a id="btnNewest" class="btn btn--active" href="#">Nieuwste eerst</a>
+        <a id="btnOldest" class="btn" href="#">Oudste eerst</a>
     </div>
     
  
@@ -27,13 +27,19 @@ h1{
     margin-top: 20px;
 }
 
-a{
+.btn{
     font-family: 'Dosis', sans-serif;
-    color: #F1E856;
-    background-color: #E72C70;
+    font-weight: 600;
+    color: #E72C70;
+    border: 3px solid #E72C70;
     text-decoration: none;
     padding: 12px 22px;
     margin: 0 10px;
     border-radius: 25px;
+}
+
+.btn--active{
+    color: #F1E856;
+    background-color: #E72C70;
 }
 </style>
