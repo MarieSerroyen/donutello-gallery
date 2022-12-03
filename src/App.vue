@@ -1,11 +1,11 @@
 <script setup>
 import Navigation from './components/Nav.vue'
-import GalleryHead from './components/Head.vue'
+import Orders from './components/Orders.vue'
 </script>
 
 <template>
   <Navigation/>
-      <GalleryHead/>
+  <Orders/>
     
     
  
