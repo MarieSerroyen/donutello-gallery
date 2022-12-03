@@ -1,6 +1,11 @@
 <script setup>
     import {ref} from 'vue'
 
+    let old_password = ref('');
+    let new_password = ref('');
+    let confirm_password = ref('');
+    let error = ref('');
+
 </script>
 
 <template>
@@ -66,5 +71,12 @@
         width: 40%;
         text-transform: uppercase;
         margin-top: 50px;
+    }
+
+    .form__error {
+        color: red;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        font-weight: bold;
     }
 </style>

@@ -4,9 +4,9 @@
 </script>
 
 <template>
-    <div>
+    <!--<div>
         <Navigation/>
-    </div>
+    </div>-->
     <div>
         <ChangeForm/>
     </div>
