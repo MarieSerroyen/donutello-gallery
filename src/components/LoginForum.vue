@@ -1,0 +1,102 @@
+<script setup>
+    import {ref} from 'vue'
+
+    let mail = ref('');
+    let password = ref('');
+    let error = ref('');
+
+    const login = () => {
+        fetch("https://donuttello-api-team6.onrender.com/api/v1/users/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                mail: mail.value,
+                password: password.value
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.status === "success") {
+                let token = data.data.token
+                localStorage.setItem("token", token)
+                
+                window.location.href = "index.html"
+            }
+            if (data.status === "error") {
+                error.value = data.message;
+            }
+        })    
+    }
+
+</script>
+
+<template>
+    <div class="login">
+        <h1 class="login__title">Personeel log in</h1>
+
+        <form class="login__form">
+            <label class="login__label" for="mail">E-mailadres</label>
+            <input class="login__input" type="text" id="mail" v-model="mail" required>
+
+            <label class="login__label" for="password">Wachtwoord</label>
+            <input class="login__input" type="password" id="password" v-model="password" required>
+            
+            <p class="form__error" id="error">{{ error }}</p>
+
+            <button class="login__button" type="submit" @click.prevent="login">Inloggen</button>
+        </form>
+    </div>
+ 
+</template>
+
+<style scoped>
+    .login {
+        font-family:'Dosis', sans-serif;
+    }
+    .login__title {
+        font-size: 3rem;
+        padding-top: 140px;
+        text-align: left;
+    }
+
+    .login__form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .login__label {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .login__input {
+        border: none;
+        border-bottom: 2px solid #E72870;
+        font-size: 1.2rem;
+        width: 50%;
+        height: 40px;
+        margin-bottom: 20px;
+    }
+
+    .login__button {
+        background-color: #E72870;
+        color: #F7E200;
+        border: none;
+        border-radius: 100px;
+        padding: 10px 20px;
+        width: 40%;
+        text-transform: uppercase;
+        margin-top: 50px;
+    }
+
+    .form__error {
+        color: red;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
