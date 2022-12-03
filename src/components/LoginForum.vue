@@ -23,7 +23,7 @@
 
 <style scoped>
     .login__title {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 
     .login__form {
@@ -43,5 +43,16 @@
         border-bottom: 2px solid #E72870;
         width: 100%;
         margin-bottom: 20px;
+    }
+
+    .login__button {
+        background-color: #E72870;
+        color: #F7E200;
+        border: none;
+        border-radius: 100px;
+        padding: 10px 20px;
+        width: 40%;
+        text-transform: uppercase;
+        margin-top: 50px;
     }
 </style>
