@@ -4,8 +4,13 @@
 </script>
 
 <template>
-    <Navigation/>
-    <ChangeForm/>
+    <div>
+        <Navigation/>
+    </div>
+    <div>
+        <ChangeForm/>
+    </div>
+    
 
 </template>
 
