@@ -18,7 +18,14 @@
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            if(data.status === "success") {
+                let token = data.data.token
+                localStorage.setItem("token", token)
+                console.log(token)
+            }
+            if (data.status === "error") {
+                console.log(data.message)
+            }
         })
         
 
