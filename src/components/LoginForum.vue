@@ -15,10 +15,6 @@
             <label class="login__label" for="password">Wachtwoord</label>
             <input class="login__input" type="password" id="password" v-model="password" required>
 
-            <a href="#">
-               <span class="reset__link">Reset wachtwoord</span> 
-            </a>
-
             <button class="login__button" type="submit">Inloggen</button>
         </form>
     </div>
@@ -47,13 +43,6 @@
         border-bottom: 2px solid #E72870;
         width: 100%;
         margin-bottom: 20px;
-    }
-
-    .reset__link {
-        color: #E72870;
-        font-size: 1rem;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
     }
 
     .login__button {
