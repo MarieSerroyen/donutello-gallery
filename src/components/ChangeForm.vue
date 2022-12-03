@@ -35,4 +35,25 @@
         padding-top: 130px;
         text-align: left;
     }
+
+    .password__form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .password__label {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .password__input {
+        border: none;
+        border-bottom: 2px solid #E72870;
+        font-size: 1.2rem;
+        width: 50%;
+        height: 40px;
+        margin-bottom: 20px;
+    }
 </style>
