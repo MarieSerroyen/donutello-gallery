@@ -6,6 +6,25 @@
     let confirm_password = ref('');
     let error = ref('');
 
+
+    const changePassword = () => {
+        fetch("https://donuttello-api-team6.onrender.com/api/v1/users/6389bb98c20e61e4f2ba40f2", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            },
+            body: JSON.stringify({
+                old_password: old_password.value,
+                new_password: new_password.value,
+                confirm_password: confirm_password.value
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })    
+    }
 </script>
 
 <template>
