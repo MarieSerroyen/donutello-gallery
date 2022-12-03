@@ -1,5 +1,19 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, reactive } from 'vue'
+    
+let donutsData = reactive({ commentData: [] });
+
+//fetch naar de api
+onMounted(() => {
+    const api_url = "https://donuttello-api-team6.onrender.com/api/v1/donuts";
+    fetch(api_url)
+        .then(response => response.json())
+        .then(data => {
+            donutsData.donut = data;
+            console.log(donutsData.donut);
+    });
+    
+});
 
 </script>
 
@@ -22,17 +36,17 @@ import { ref } from 'vue'
             <p class="order__info order__info__logo">Logo: none</p>
             <a class="btn btn--order" href="#">Start productie</a>
         </li>
-        <li class="order">
+        <!-- <li class="order" v-for="donut in donutsData.donut" :key="donutsData.donut.id">
             <img class="order__image" src="../assets/donut-previeuw.png" alt="donut preview">
-            <h2 class="order__title">My Donut</h2>
-            <p class="order__creator">Thomas More</p>
-            <p class="order__date">3-12-2023</p>
-            <p class="order__info">Smaak: normal</p>
-            <p class="order__info">Glazuur: none</p>
-            <p class="order__info">Topping: none</p>
-            <p class="order__info order__info__logo">Logo: none</p>
+            <h2 class="order__title">{{ donut.name }}</h2>
+            <p class="order__creator">{{ donut.company }}</p>
+            <p class="order__date">{{ donut.date }}</p>
+            <p class="order__info">{{ donut.flavour }}</p>
+            <p class="order__info">{{ donut.glaze }}</p>
+            <p class="order__info">{{ donut.topping }}</p>
+            <p class="order__info order__info__logo">{{ donut.logo }}</p>
             <a class="btn btn--order" href="#">Start productie</a>
-        </li>
+        </li> -->
       </ul>
     </div>
     
