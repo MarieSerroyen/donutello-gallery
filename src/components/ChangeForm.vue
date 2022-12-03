@@ -41,7 +41,7 @@
 
 <template>
     <div class="password">
-        <h1 class="password_title">Wijzig wachtwoord</h1>
+        <h1 class="password__title">Wijzig wachtwoord</h1>
 
         <form class="password__form">
             <label class="password__label" for="old_password">Oud wachtwoord</label>
@@ -55,7 +55,7 @@
             
             <p class="form__error" id="error">{{ error }}</p>
 
-            <button class="password__button" type="submit" @click.prevent="changePassword">Wijzigen</button>
+            <button class="password__button btn btn--active" type="submit" @click.prevent="changePassword">Wijzigen</button>
         </form>
         
     </div>
@@ -67,8 +67,9 @@
         font-family:'Dosis', sans-serif;
     }
     .password__title {
-        font-size: 3rem;
-        padding-top: 130px;
+        font-size: 2rem;
+        padding-top: 110px;
+        padding-left: 12px;
         text-align: left;
     }
 
@@ -76,33 +77,40 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        padding: 15px;
     }
 
     .password__label {
         font-size: 1.2rem;
-        margin-top: 2rem;
-        margin-bottom: 20px;
+        margin-top: 1rem;
+        margin-bottom: 0rem;
     }
 
     .password__input {
         border: none;
         border-bottom: 2px solid #E72870;
         font-size: 1.2rem;
-        width: 50%;
+        width: 100%;
         height: 40px;
         margin-bottom: 20px;
     }
 
-    .password__button {
-        background-color: #E72870;
-        color: #F7E200;
-        border: none;
-        border-radius: 100px;
-        padding: 10px 20px;
-        width: 40%;
-        text-transform: uppercase;
-        margin-top: 50px;
-        cursor: pointer;
+    .btn{
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    font-size: 1em;;
+    color: #E72C70;
+    border: 3px solid #E72C70;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    margin: 0 10px;
+    }
+
+    .btn--active{
+        color: #F1E856;
+        background-color: #E72C70;
     }
 
     .form__error {
@@ -110,5 +118,16 @@
         font-size: 1.2rem;
         margin-top: 20px;
         font-weight: bold;
+    }
+
+    @media (min-width: 375px) {
+        .btn{
+        font-size: 1.2em;
+        padding: 12px 22px;
+        margin: 0 10px;
+        }
+        .password {
+            padding: 0 30%;
+        }
     }
 </style>
