@@ -2,10 +2,11 @@
     import {ref} from 'vue'
 
     let mail = ref('');
+    let password = ref('');
 
 
     const login = () => {
-        console.log(mail.value)
+        console.log(mail.value, password.value)
 
     }
 
@@ -22,7 +23,7 @@
             <label class="login__label" for="password">Wachtwoord</label>
             <input class="login__input" type="password" id="password" v-model="password" required>
 
-            <button class="login__button" type="submit" @click="login">Inloggen</button>
+            <button class="login__button" type="submit" @click.prevent="login">Inloggen</button>
         </form>
     </div>
  
