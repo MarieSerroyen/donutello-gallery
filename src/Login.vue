@@ -1,11 +1,11 @@
 <script setup>
     import Navigation from './components/Nav.vue'
-    import LoginForum from './components/LoginForum.vue'
+    import LoginForm from './components/LoginForm.vue'
 </script>
 
 <template>
     <Navigation/>
-    <LoginForum/>
+    <LoginForm/>
 
 </template>
 

@@ -1,11 +1,11 @@
 <script setup>
     import Navigation from './components/Nav.vue'
-    import ChangeForum from './components/ChangeForum.vue'
+    import ChangeForm from './components/ChangeForm.vue'
 </script>
 
 <template>
     <Navigation/>
-    <ChangeForum/>
+    <ChangeForm/>
 
 </template>
 
