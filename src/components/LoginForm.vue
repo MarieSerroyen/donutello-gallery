@@ -91,6 +91,7 @@
         width: 40%;
         text-transform: uppercase;
         margin-top: 50px;
+        cursor: pointer;
     }
 
     .form__error {
