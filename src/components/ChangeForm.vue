@@ -56,4 +56,15 @@
         height: 40px;
         margin-bottom: 20px;
     }
+
+    .password__button {
+        background-color: #E72870;
+        color: #F7E200;
+        border: none;
+        border-radius: 100px;
+        padding: 10px 20px;
+        width: 40%;
+        text-transform: uppercase;
+        margin-top: 50px;
+    }
 </style>
