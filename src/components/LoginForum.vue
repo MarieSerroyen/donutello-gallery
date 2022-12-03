@@ -6,7 +6,21 @@
 
 
     const login = () => {
-        console.log(mail.value, password.value)
+        fetch("https://donuttello-api-team6.onrender.com/api/v1/users/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                mail: mail.value,
+                password: password.value
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        
 
     }
 
