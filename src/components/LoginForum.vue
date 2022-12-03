@@ -1,8 +1,9 @@
 <script setup>
-    import {ref} from 'vue'
+    import {ref, reactive} from 'vue'
 
     let mail = ref('');
     let password = ref('');
+    let error = ref('');
 
 
     const login = () => {
@@ -25,6 +26,7 @@
                 window.location.href = "index.html"
             }
             if (data.status === "error") {
+                error.value = data.message;
                 console.log(data.message)
             }
         })
@@ -44,7 +46,8 @@
 
             <label class="login__label" for="password">Wachtwoord</label>
             <input class="login__input" type="password" id="password" v-model="password" required>
-
+            
+            <p class="form__error" id="error">{{error}}</p>
             <button class="login__button" type="submit" @click.prevent="login">Inloggen</button>
         </form>
     </div>
@@ -86,5 +89,11 @@
         width: 40%;
         text-transform: uppercase;
         margin-top: 50px;
+    }
+
+    .form__error {
+        color: red;
+        font-size: 1.2rem;
+        margin-top: 20px;
     }
 </style>
