@@ -14,7 +14,7 @@
     })
 
     const changePassword = () => {
-        fetch("https://donuttello-api-team6.onrender.com/api/v1/users/6389bb98c20e61e4f2ba40f2", {
+        fetch("https://donuttello-api-team6.onrender.com/api/v1/users/" + localStorage.getItem("id"), {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
