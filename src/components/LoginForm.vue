@@ -20,7 +20,10 @@
         .then(data => {
             if(data.status === "success") {
                 let token = data.data.token
+                let id = data.data.id
+
                 localStorage.setItem("token", token)
+                localStorage.setItem("id", id)
                 
                 window.location.href = "index.html"
             }
