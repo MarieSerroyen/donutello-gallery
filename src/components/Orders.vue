@@ -5,12 +5,18 @@ let donutsData = reactive({ commentData: [] });
 
 //fetch naar de api
 onMounted(() => {
-    const api_url = "https://donuttello-api-team6.onrender.com/api/v1/donuts";
-    fetch(api_url)
+    fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            }
+        }
+    )
         .then(response => response.json())
         .then(data => {
             donutsData.donut = data;
-            console.log(donutsData.donut);
+            console.log(data);
     });
     
 });
