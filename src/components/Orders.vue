@@ -22,28 +22,50 @@ onMounted(() => {
         .then(data => {
             donutsData.donut = data.data.donuts;
             console.log(data);
+            
     });
     
 });
 console.log(donutsData.data)
 
+
+
 const changeStatus = (event) => {
     console.log(event.target.id)
-    fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem('token')
-        },
-        body: JSON.stringify({
-            status: "In production"
+    if(event.target.innerHTML === "") {
+        event.target.innerHTML = "In productie"
+        fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            },
+            body: JSON.stringify({
+                status: "In productie"
+            })
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        
-    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.data.donut.status)
+        })
+    } else if(event.target.innerHTML === "In productie") {
+        event.target.innerHTML = "Klaar"
+        fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            },
+            body: JSON.stringify({
+                status: "Klaar"
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.data.donut.status)
+        })
+    }
+    
 }
 </script>
 
@@ -64,7 +86,7 @@ const changeStatus = (event) => {
             <p class="order__info">Glazuur: {{ donut.glaze }}</p>
             <p class="order__info">Topping: {{ donut.topping }}</p>
             <p class="order__info order__info__logo">Logo: {{ donut.logo }}</p>
-            <a class="btn btn--order" v-bind:id="donut._id" @click.prevent="changeStatus" href="#">Start productie</a>
+            <a class="btn btn--order" v-bind:id="donut._id" @click.prevent="changeStatus" href="#">{{ donut.status }}</a>
         </li>
       </ul>
     </div>
@@ -109,6 +131,7 @@ h1{
 
 .btn--complete{
     border: none;
+    background-color: #ffffff;
 }
 
 .btn--controls{
