@@ -1,7 +1,8 @@
 <script setup>
 import { ref, onMounted, reactive } from 'vue'
     
-let donutsData = reactive({ commentData: [] });
+let donutsData = reactive({ donuts: [] });
+
 
 //fetch naar de api
 onMounted(() => {
@@ -15,12 +16,12 @@ onMounted(() => {
     )
         .then(response => response.json())
         .then(data => {
-            donutsData.donut = data;
-            console.log(donutsData.donut.data.donuts);
+            donutsData.donut = data.data.donuts;
+            console.log(data);
     });
     
 });
-
+console.log(donutsData.data)
 </script>
 
 <template>
@@ -31,7 +32,7 @@ onMounted(() => {
     </div>
     <div class="orders">
       <ul >
-        <li class="order" v-for="donut in donutsData.donut.data.donuts" :key="donutsData.donut.id">
+        <li class="order" v-for="donut in donutsData.donut" :key="donutsData.donut.id">
             <img class="order__image" src="../assets/donut-previeuw.png" alt="donut preview">
             <h2 class="order__title">{{ donut.name }}</h2>
             <p class="order__creator">{{ donut.company }}</p>
