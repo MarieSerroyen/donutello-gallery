@@ -44,8 +44,9 @@ console.log(donutsData.data)
         </li>
       </ul>
     </div>
-    
- 
+
+    <a href="wijzig_wachtwoord.html" class="changePassword">Wijzig wachtwoord</a>
+
 </template>
 
 <style scoped>
@@ -148,6 +149,17 @@ h1{
 
 .order__info__logo{
     margin-bottom: 20px;
+}
+
+.changePassword{
+    font-family: 'Dosis', sans-serif;
+    font-size: 1em;
+    color: #E72C70;
+    text-decoration: none;
+    margin: 30px;
+    margin-right: 60px;
+    display: block;
+    text-align: right;
 }
 
 @media (min-width: 375px) {
