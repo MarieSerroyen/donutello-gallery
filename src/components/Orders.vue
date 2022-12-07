@@ -67,6 +67,23 @@ const changeStatus = (event) => {
     }
     
 }
+
+const deleteDonut = (event) => {
+    console.log(event.target.id)
+    fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem('token')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        event.target.parentElement.remove()
+    })
+}
+
 </script>
 
 <template>
@@ -78,6 +95,7 @@ const changeStatus = (event) => {
     <div class="orders">
       <ul >
         <li class="order" v-for="donut in donutsData.donut" :key="donutsData.donut.id">
+            <a href="#" class="icon--delete" v-bind:id="donut._id" @click.prevent="deleteDonut">delete</a>
             <img class="order__image" src="../assets/donut-previeuw.png" alt="donut preview">
             <h2 class="order__title">{{ donut.name }}</h2>
             <p class="order__creator">{{ donut.company }}</p>
