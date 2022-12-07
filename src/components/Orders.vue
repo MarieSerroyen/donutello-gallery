@@ -32,7 +32,7 @@ console.log(donutsData.data)
 
 const changeStatus = (event) => {
     console.log(event.target.id)
-    if(event.target.innerHTML === "") {
+    if(event.target.innerHTML === "Start productie") {
         event.target.innerHTML = "In productie"
         fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
             method: "PUT",
