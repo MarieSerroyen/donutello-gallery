@@ -40,7 +40,7 @@ console.log(donutsData.data)
             <img class="order__image" src="../assets/donut-previeuw.png" alt="donut preview">
             <h2 class="order__title">{{ donut.name }}</h2>
             <p class="order__creator">{{ donut.company }}</p>
-            <p class="order__date">{{ donut.date }}</p>
+            <p class="order__date">{{ donut.date.substring(0,10) }}</p>
             <p class="order__info">Smaak: {{ donut.base }}</p>
             <p class="order__info">Glazuur: {{ donut.glaze }}</p>
             <p class="order__info">Topping: {{ donut.topping }}</p>
