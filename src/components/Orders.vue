@@ -80,7 +80,7 @@ const deleteDonut = (event) => {
     .then(response => response.json())
     .then(data => {
         console.log(data)
-        event.target.parentElement.remove()
+        event.target.parentElement.parentElement.remove()
     })
 }
 
@@ -95,7 +95,7 @@ const deleteDonut = (event) => {
     <div class="orders">
       <ul >
         <li class="order" v-for="donut in donutsData.donut" :key="donutsData.donut.id">
-            <button href="#" class="icon--delete" v-bind:id="donut._id" @click.prevent="deleteDonut"></button>
+            <a href="#" class="order--delete" v-bind:id="donut._id" @click.prevent="deleteDonut"><div class="order--delete--icon"></div></a>
             <img class="order__image" src="../assets/donut-previeuw.png" alt="donut preview">
             <h2 class="order__title">{{ donut.name }}</h2>
             <p class="order__creator">{{ donut.company }}</p>
@@ -182,20 +182,6 @@ h1{
     /* height: 470px; */
 }
 
-.icon--delete{
-    position: absolute;
-    background-image: url('../assets/trash.png');
-    background-size: 25px;
-    height: 60px;
-    width: 40px;
-    margin-left: 180px;
-    background-repeat: no-repeat;
-    background-position: right;
-    border: none;
-    background-color: transparent;
-    z-index: -1;
-}
-
 .order__image{
     width: 190px;
     height: auto;
@@ -242,6 +228,21 @@ h1{
 
 .order__info__description{
     margin-bottom: 20px;
+}
+
+.order--delete{
+    position: absolute;
+    margin-left: 180px;
+    background-color: transparent;
+    background-image: url('../assets/trash.png');
+    background-size: 25px;
+    height: 60px;
+    width: 40px;
+    margin-left: 180px;
+    background-repeat: no-repeat;
+    background-position: right;
+    border: none;
+    background-color: transparent;
 }
 
 .changePassword{

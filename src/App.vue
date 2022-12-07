@@ -4,7 +4,8 @@ import Orders from './components/Orders.vue'
 </script>
 
 <template>
-  <Navigation/>
+  <div class="navBar"><Navigation/></div>
+  
   <Orders/>
     
     
@@ -13,5 +14,8 @@ import Orders from './components/Orders.vue'
 </template>
 
 <style scoped>
-
+.navBar{
+  position: fixed;
+  z-index: 100;
+}
 </style>
