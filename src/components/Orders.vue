@@ -95,17 +95,19 @@ const deleteDonut = (event) => {
     <div class="orders">
       <ul >
         <li class="order" v-for="donut in donutsData.donut" :key="donutsData.donut.id">
-            <a href="#" class="icon--delete" v-bind:id="donut._id" @click.prevent="deleteDonut">delete</a>
+            <button href="#" class="icon--delete" v-bind:id="donut._id" @click.prevent="deleteDonut"></button>
             <img class="order__image" src="../assets/donut-previeuw.png" alt="donut preview">
             <h2 class="order__title">{{ donut.name }}</h2>
             <p class="order__creator">{{ donut.company }}</p>
-            <a v-bind:href="`mailto:${donut.makerMail}`" >{{ donut.makerMail }}</a>
+            <a class="order__email" v-bind:href="`mailto:${donut.makerMail}`" >{{ donut.makerMail }}</a>
             <p class="order__date">{{ donut.date.substring(0,10) }}</p>
             <p class="order__info">Aantal: {{ donut.amount }}</p>
             <p class="order__info">Smaak: {{ donut.base }}</p>
             <p class="order__info">Glazuur: {{ donut.glaze }}</p>
             <p class="order__info">Topping: {{ donut.topping }}</p>
-            <p class="order__info order__info__logo">Logo: {{ donut.logo }}</p>
+            <p class="order__info">Logo: {{ donut.logo }}</p>
+            <p class="order__info">Type kaartje: {{ donut.cardType }}</p>
+            <p class="order__info order__info__description">Opmerking: {{ donut.description }}</p>
             <a class="btn btn--order" v-bind:id="donut._id" @click.prevent="changeStatus" href="#">{{ donut.status }}</a>
         </li>
       </ul>
@@ -164,7 +166,7 @@ h1{
     flex-direction: row ;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 30px;
     padding: 0;
 }
@@ -176,7 +178,22 @@ h1{
     box-shadow: 4px 4px 30px 3px rgba(0, 0, 0, 0.25);
     border-radius: 17px;
     width: 220px;
-    height: 470px;
+    height: auto;
+    /* height: 470px; */
+}
+
+.icon--delete{
+    position: absolute;
+    background-image: url('../assets/trash.png');
+    background-size: 25px;
+    height: 60px;
+    width: 40px;
+    margin-left: 180px;
+    background-repeat: no-repeat;
+    background-position: right;
+    border: none;
+    background-color: transparent;
+    z-index: -1;
 }
 
 .order__image{
@@ -211,10 +228,19 @@ h1{
     font-family: 'Dosis', sans-serif;
     font-size: 1em;
     color: #E72C70;
-    line-height: 7px;
+    margin: 0 3px
 }
 
-.order__info__logo{
+.order__email{
+    font-family: 'Dosis', sans-serif;
+    font-size: 1em;
+    color: black;
+    text-decoration: none;
+    margin: 0;
+    display: block;
+}
+
+.order__info__description{
     margin-bottom: 20px;
 }
 
@@ -240,7 +266,7 @@ h1{
         margin-top: 100px;
     }
     .order{
-        height: 490px;
+        height: auto;
     }
     
 }
