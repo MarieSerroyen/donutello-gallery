@@ -3,7 +3,6 @@ import { ref, onMounted, reactive } from 'vue'
     
 let donutsData = reactive({ donuts: [] });
 
-
 //fetch naar de api
 onMounted(() => {
     fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts", {
@@ -37,7 +36,7 @@ console.log(donutsData.data)
             <h2 class="order__title">{{ donut.name }}</h2>
             <p class="order__creator">{{ donut.company }}</p>
             <p class="order__date">{{ donut.date }}</p>
-            <p class="order__info">Smaak: {{ donut.flavour }}</p>
+            <p class="order__info">Smaak: {{ donut.base }}</p>
             <p class="order__info">Glazuur: {{ donut.glaze }}</p>
             <p class="order__info">Topping: {{ donut.topping }}</p>
             <p class="order__info order__info__logo">Logo: {{ donut.logo }}</p>
