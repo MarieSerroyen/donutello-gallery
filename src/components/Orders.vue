@@ -88,10 +88,10 @@ const deleteDonut = (event) => {
 
 <template>
     <h1>Bestellingen</h1>
-    <div class="controls">
+    <!-- <div class="controls">
         <a id="btnNewest" class="btn btn--controls btn--active" href="#">Nieuwste eerst</a>
         <a id="btnOldest" class="btn btn--controls" href="#">Oudste eerst</a>
-    </div>
+    </div> -->
     <div class="orders">
       <ul >
         <li class="order" v-for="donut in donutsData.donut" :key="donutsData.donut.id">
