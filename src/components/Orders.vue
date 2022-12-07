@@ -26,6 +26,25 @@ onMounted(() => {
     
 });
 console.log(donutsData.data)
+
+const changeStatus = (event) => {
+    console.log(event.target.id)
+    fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+            status: "In production"
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        
+    })
+}
 </script>
 
 <template>
@@ -45,7 +64,7 @@ console.log(donutsData.data)
             <p class="order__info">Glazuur: {{ donut.glaze }}</p>
             <p class="order__info">Topping: {{ donut.topping }}</p>
             <p class="order__info order__info__logo">Logo: {{ donut.logo }}</p>
-            <a class="btn btn--order" href="#">Start productie</a>
+            <a class="btn btn--order" v-bind:id="donut._id" @click.prevent="changeStatus" href="#">Start productie</a>
         </li>
       </ul>
     </div>
