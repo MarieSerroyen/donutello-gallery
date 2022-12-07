@@ -5,6 +5,11 @@ let donutsData = reactive({ donuts: [] });
 
 //fetch naar de api
 onMounted(() => {
+    let token = localStorage.getItem("token")
+    if (!token) {
+        window.location.href = "login.html"
+    }
+
     fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts", {
             method: "GET",
             headers: {
