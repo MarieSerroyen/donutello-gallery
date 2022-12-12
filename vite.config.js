@@ -8,7 +8,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        nested: 'login.html'
+        nested: 'login.html',
+        changepassword: 'wijzig_wachtwoord.html'
       }
     }
   }
