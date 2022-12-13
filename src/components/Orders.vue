@@ -96,7 +96,7 @@ const deleteDonut = (event) => {
       <ul >
         <li class="order" v-for="donut in donutsData.donut" :key="donutsData.donut.id">
             <a href="#" class="order--delete" v-bind:id="donut._id" @click.prevent="deleteDonut"><div class="order--delete--icon"></div></a>
-            <img class="order__image" src="../assets/donut-previeuw.png" alt="donut preview">
+            <img class="order__image" v-bind:src="donut.donutImage" alt="donut preview">
             <h2 class="order__title">{{ donut.name }}</h2>
             <p class="order__creator">{{ donut.company }}</p>
             <a class="order__email" v-bind:href="`mailto:${donut.makerMail}`" >{{ donut.makerMail }}</a>
