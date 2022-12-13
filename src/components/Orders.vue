@@ -105,7 +105,7 @@ const deleteDonut = (event) => {
             <p class="order__info">Smaak: {{ donut.base }}</p>
             <p class="order__info">Glazuur: {{ donut.glaze }}</p>
             <p class="order__info">Topping: {{ donut.topping }}</p>
-            <p class="order__info">Logo: {{ donut.logo }}</p>
+            <p class="order__info">Logo: <a v-bind:href="donut.logo" target="_blank">{{donut.logo}}</a></p>
             <p class="order__info">Type kaartje: {{ donut.cardType }}</p>
             <p class="order__info order__info__description">Opmerking: {{ donut.description }}</p>
             <a class="btn btn--order" v-bind:id="donut._id" @click.prevent="changeStatus" href="#">{{ donut.status }}</a>
