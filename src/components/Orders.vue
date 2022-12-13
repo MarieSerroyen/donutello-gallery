@@ -70,6 +70,7 @@ const changeStatus = (event) => {
 
 const deleteDonut = (event) => {
     console.log(event.target.id)
+    event.preventDefault();
     fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
         method: "DELETE",
         headers: {
@@ -81,6 +82,7 @@ const deleteDonut = (event) => {
     .then(data => {
         console.log(data)
         event.target.parentElement.parentElement.remove()
+        window.location.href = "index.html"
     })
 }
 
