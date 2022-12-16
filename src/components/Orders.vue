@@ -115,7 +115,11 @@ const deleteDonut = (event) => {
       </ul>
     </div>
 
-    <a href="wijzig_wachtwoord.html" class="changePassword">Wijzig wachtwoord</a>
+    <div class="bottom__links">
+        <a href="wijzig_wachtwoord.html" class="changePassword">Wijzig wachtwoord</a>
+        <a href="login.html" class="changePassword" id="logout">Logout</a>
+    </div>
+
 
 </template>
 
@@ -263,6 +267,13 @@ h1{
     margin-right: 60px;
     display: block;
     text-align: right;
+}
+
+.bottom__links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
 }
 
 @media (min-width: 375px) {
