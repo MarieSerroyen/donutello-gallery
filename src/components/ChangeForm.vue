@@ -36,6 +36,7 @@
                 error.value = '';
             }
             if (data.status === "error") {
+                success.value = '';
                 error.value = data.message;
             }
         })    
@@ -57,7 +58,7 @@
             <input class="password__input" type="password" id="confirm_password" v-model="confirm_password" required>
             
             <p class="form__error" id="error">{{ error }}</p>
-            <p class="form__success" id="success">{{ success }}</p>
+            <p class="form__success" id="success">Wachtwoord is succesvol gewijzigd. U wordt automatisch uitgelogd.</p>
 
             <button class="password__button btn btn--active" type="submit" @click.prevent="changePassword">Wijzigen</button>
         </form>
@@ -125,10 +126,13 @@
     }
 
     .form__success {
-        color: green;
+        background-color: #B7E5B0;
         font-size: 1.2rem;
         margin-top: 20px;
-        font-weight: bold;
+        height: 40px;
+        width: 100%;
+        text-align: center;
+        padding-top: 18px;
     }
 
     @media (min-width: 375px) {
