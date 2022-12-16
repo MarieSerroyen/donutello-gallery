@@ -58,7 +58,7 @@
             <input class="password__input" type="password" id="confirm_password" v-model="confirm_password" required>
             
             <p class="form__error" id="error">{{ error }}</p>
-            <p class="form__success" id="success">Wachtwoord is succesvol gewijzigd. U wordt automatisch uitgelogd.</p>
+            <p class="form__success" id="success">{{ success }}</p>
 
             <button class="password__button btn btn--active" type="submit" @click.prevent="changePassword">Wijzigen</button>
         </form>
@@ -68,6 +68,10 @@
 </template>
 
 <style scoped>
+
+    .hidden {
+        display: none;
+    }
     .password {
         font-family:'Dosis', sans-serif;
     }
@@ -126,13 +130,10 @@
     }
 
     .form__success {
-        background-color: #B7E5B0;
+        color: green;
         font-size: 1.2rem;
         margin-top: 20px;
-        height: 40px;
-        width: 100%;
-        text-align: center;
-        padding-top: 18px;
+        font-weight: bold;
     }
 
     @media (min-width: 375px) {
