@@ -31,9 +31,11 @@
         .then(data => {
             console.log(data)
             if(data.status === "success") {                
-                //window.location.href = "index.html"
                 success.value = data.message;
                 error.value = '';
+                setTimeout( () => window.location.href = "login.html", 3000);
+                localStorage.clear();
+                
             }
             if (data.status === "error") {
                 success.value = '';
