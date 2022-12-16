@@ -86,6 +86,11 @@ const deleteDonut = (event) => {
     })
 }
 
+const logout = () => {
+    localStorage.clear();
+    window.location.href = "login.html"
+}
+
 </script>
 
 <template>
@@ -117,7 +122,7 @@ const deleteDonut = (event) => {
 
     <div class="bottom__links">
         <a href="wijzig_wachtwoord.html" class="changePassword">Wijzig wachtwoord</a>
-        <a href="login.html" class="changePassword" id="logout">Logout</a>
+        <a href="#" class="changePassword" @click.prevent="logout">Logout</a>
     </div>
 
 
