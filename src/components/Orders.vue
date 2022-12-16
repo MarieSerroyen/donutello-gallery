@@ -21,17 +21,14 @@ onMounted(() => {
         .then(response => response.json())
         .then(data => {
             donutsData.donut = data.data.donuts;
-            console.log(data);
             
     });
     
 });
-console.log(donutsData.data)
 
 
 
 const changeStatus = (event) => {
-    console.log(event.target.id)
     if(event.target.innerHTML === "Start productie") {
         event.target.innerHTML = "In productie"
         fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
@@ -69,7 +66,6 @@ const changeStatus = (event) => {
 }
 
 const deleteDonut = (event) => {
-    console.log(event.target.id)
     event.preventDefault();
     fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
         method: "DELETE",
@@ -80,7 +76,6 @@ const deleteDonut = (event) => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
         event.target.parentElement.parentElement.remove()
         window.location.href = "index.html"
     })
