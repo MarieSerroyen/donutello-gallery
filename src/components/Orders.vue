@@ -21,6 +21,7 @@ onMounted(() => {
         .then(response => response.json())
         .then(data => {
             donutsData.donut = data.data.donuts;
+            donutsData.donut.reverse();
             
     });
     
