@@ -5,6 +5,7 @@
     let new_password = ref('');
     let confirm_password = ref('');
     let error = ref('');
+    let success = ref('');
 
     onMounted (() => {
         let token = localStorage.getItem("token")
@@ -30,7 +31,9 @@
         .then(data => {
             console.log(data)
             if(data.status === "success") {                
-                window.location.href = "index.html"
+                //window.location.href = "index.html"
+                success.value = data.message;
+                error.value = '';
             }
             if (data.status === "error") {
                 error.value = data.message;
@@ -54,6 +57,7 @@
             <input class="password__input" type="password" id="confirm_password" v-model="confirm_password" required>
             
             <p class="form__error" id="error">{{ error }}</p>
+            <p class="form__success" id="success">{{ success }}</p>
 
             <button class="password__button btn btn--active" type="submit" @click.prevent="changePassword">Wijzigen</button>
         </form>
@@ -96,16 +100,16 @@
     }
 
     .btn{
-    font-family: 'Dosis', sans-serif;
-    font-weight: 600;
-    font-size: 1em;;
-    color: #E72C70;
-    border: 3px solid #E72C70;
-    text-decoration: none;
-    border-radius: 30px;
-    font-size: 1.2em;
-    padding: 10px 20px;
-    margin: 0 10px;
+        font-family: 'Dosis', sans-serif;
+        font-weight: 600;
+        font-size: 1em;;
+        color: #E72C70;
+        border: 3px solid #E72C70;
+        text-decoration: none;
+        border-radius: 30px;
+        font-size: 1.2em;
+        padding: 10px 20px;
+        margin: 0 10px;
     }
 
     .btn--active{
@@ -115,6 +119,13 @@
 
     .form__error {
         color: red;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    .form__success {
+        color: green;
         font-size: 1.2rem;
         margin-top: 20px;
         font-weight: bold;
