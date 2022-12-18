@@ -30,8 +30,13 @@ onMounted(() => {
 
 
 const changeStatus = (event) => {
-    if(event.target.innerHTML === "Start productie") {
-        event.target.innerHTML = "In productie"
+    console.log(event.target.id)
+    if(event.target.innerHTML === "Status op 'In productie' zetten") {
+        event.target.innerHTML = "Status op 'In klaar' zetten"
+        event.target.parentElement.querySelector(".status").innerHTML = "Status: In productie"
+        event.target.parentElement.querySelector(".status--back").innerHTML = "Status terug op 'In afwachting' zetten"
+        //andere innerHTML ook eranderen
+
         fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
             method: "PUT",
             headers: {
@@ -46,8 +51,10 @@ const changeStatus = (event) => {
         .then(data => {
             console.log(data.data.donut.status)
         })
-    } else if(event.target.innerHTML === "In productie") {
-        event.target.innerHTML = "Klaar"
+    } else if(event.target.innerHTML === "Status op 'Klaar' zetten") {
+        event.target.innerHTML = ""
+        event.target.parentElement.querySelector(".status").innerHTML = "Status: Klaar"
+        event.target.parentElement.querySelector(".status--back").innerHTML = "Status terug op 'In productie' zetten"
         fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
             method: "PUT",
             headers: {
@@ -62,9 +69,53 @@ const changeStatus = (event) => {
         .then(data => {
             console.log(data.data.donut.status)
         })
+    } 
+    
+}
+
+const changeStatusBack = (event) => {
+    console.log(event.target.id)
+    if(event.target.innerHTML === "Status terug op 'In afwachting' zetten") {
+        event.target.innerHTML = ""
+        event.target.parentElement.querySelector(".status").innerHTML = "Status: In afwachting"
+        event.target.parentElement.querySelector(".status--forward").innerHTML = "Status op 'In productie' zetten"
+        fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            },
+            body: JSON.stringify({
+                status: "In afwachting"
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.data.donut.status)
+        })
+    } else if(event.target.innerHTML === "Status terug op 'In productie' zetten") {
+        event.target.innerHTML = "Status terug op 'In afwachting' zetten"
+        event.target.parentElement.querySelector(".status").innerHTML = "Status: In productie"
+        event.target.parentElement.querySelector(".status--forward").innerHTML = "Status op 'Klaar' zetten"
+        fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem('token')
+            },
+            body: JSON.stringify({
+                status: "In productie"
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.data.donut.status)
+        })
     }
     
 }
+
+
 
 const deleteDonut = (event) => {
     event.preventDefault();
@@ -111,7 +162,16 @@ const logout = () => {
             <p class="order__info order__info__logo">Logo: <a v-bind:href="donut.logo" target="_blank">{{donut.logo}}</a></p>
             <p class="order__info">Type kaartje: {{ donut.cardType }}</p>
             <p class="order__info order__info__description">Opmerking: {{ donut.description }}</p>
-            <a class="btn btn--order" v-bind:id="donut._id" @click.prevent="changeStatus" href="#">{{ donut.status }}</a>
+            <!-- <a class="btn btn--order" v-bind:id="donut._id" @click.prevent="changeStatus" href="#">{{ donut.status }}</a> -->
+            <p class="status">Status: {{ donut.status }}</p>
+            <a class="btn btn--order status--forward" v-if=" donut.status === 'In afwachting'" v-bind:id="donut._id" @click="changeStatus" href="#">Status op 'In productie' zetten</a>
+            <a class="btn btn--order status--forward" v-if=" donut.status === 'In productie'" v-bind:id="donut._id" @click="changeStatus" href="#">Status op 'Klaar' zetten</a>
+            <a class="btn btn--order status--forward" v-if=" donut.status === 'Klaar'" v-bind:id="donut._id" @click="changeStatus" href="#"></a>
+            <p></p>
+            <a class="btn btn--order status--back" v-if=" donut.status === 'In productie'" v-bind:id="donut._id" @click="changeStatusBack" href="#">Status terug op 'In afwachting' zetten</a>
+            <a class="btn btn--order status--back" v-if=" donut.status === 'Klaar'" v-bind:id="donut._id" @click="changeStatusBack" href="#">Status terug op 'In productie' zetten</a>
+            <a class="btn btn--order status--back" v-if=" donut.status === 'In afwachting'" v-bind:id="donut._id" @click="changeStatus" href="#"></a>
+
         </li>
       </ul>
     </div>
