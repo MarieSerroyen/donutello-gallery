@@ -145,11 +145,16 @@ const logout = () => {
 </script>
 
 <template>
+    
     <h1>Bestellingen</h1>
     <!-- <div class="controls">
         <a id="btnNewest" class="btn btn--controls btn--active" href="#">Nieuwste eerst</a>
         <a id="btnOldest" class="btn btn--controls" href="#">Oudste eerst</a>
     </div> -->
+    <div class="bottom__links">
+        <a href="wijzig_wachtwoord.html" class="changePassword">Wijzig wachtwoord</a>
+        <a href="#" class="changePassword" @click.prevent="logout">Logout</a>
+    </div>
     <div class="orders">
       <ul >
         <li class="order" v-for="donut in donutsData.donut" :key="donutsData.donut.id">
@@ -180,10 +185,7 @@ const logout = () => {
       </ul>
     </div>
 
-    <div class="bottom__links">
-        <a href="wijzig_wachtwoord.html" class="changePassword">Wijzig wachtwoord</a>
-        <a href="#" class="changePassword" @click.prevent="logout">Logout</a>
-    </div>
+    
 
 
 </template>
