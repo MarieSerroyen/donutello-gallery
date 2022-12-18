@@ -32,9 +32,10 @@ onMounted(() => {
 const changeStatus = (event) => {
     console.log(event.target.id)
     if(event.target.innerHTML === "Status op 'In productie' zetten") {
-        event.target.innerHTML = "Status op 'In klaar' zetten"
+        event.target.innerHTML = "Status op 'Klaar' zetten"
         event.target.parentElement.querySelector(".status").innerHTML = "Status: In productie"
         event.target.parentElement.querySelector(".status--back").innerHTML = "Status terug op 'In afwachting' zetten"
+        event.target.parentElement.querySelector(".status--back").style.display = "block"
         //andere innerHTML ook eranderen
 
         fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
@@ -55,6 +56,7 @@ const changeStatus = (event) => {
         event.target.innerHTML = ""
         event.target.parentElement.querySelector(".status").innerHTML = "Status: Klaar"
         event.target.parentElement.querySelector(".status--back").innerHTML = "Status terug op 'In productie' zetten"
+        event.target.parentElement.querySelector(".status--forward").style.display = "none"
         fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
             method: "PUT",
             headers: {
@@ -79,6 +81,7 @@ const changeStatusBack = (event) => {
         event.target.innerHTML = ""
         event.target.parentElement.querySelector(".status").innerHTML = "Status: In afwachting"
         event.target.parentElement.querySelector(".status--forward").innerHTML = "Status op 'In productie' zetten"
+        event.target.parentElement.querySelector(".status--back").style.display = "none"
         fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
             method: "PUT",
             headers: {
@@ -97,6 +100,7 @@ const changeStatusBack = (event) => {
         event.target.innerHTML = "Status terug op 'In afwachting' zetten"
         event.target.parentElement.querySelector(".status").innerHTML = "Status: In productie"
         event.target.parentElement.querySelector(".status--forward").innerHTML = "Status op 'Klaar' zetten"
+        event.target.parentElement.querySelector(".status--forward").style.display = "block"
         fetch("https://donuttello-api-team6.onrender.com/api/v1/donuts/" + event.target.id, {
             method: "PUT",
             headers: {
@@ -166,11 +170,11 @@ const logout = () => {
             <p class="order__info status">Status: {{ donut.status }}</p>
             <a class="btn btn--order btn--active status--forward" v-if=" donut.status === 'In afwachting'" v-bind:id="donut._id" @click="changeStatus" href="#">Status op 'In productie' zetten</a>
             <a class="btn btn--order btn--active status--forward" v-if=" donut.status === 'In productie'" v-bind:id="donut._id" @click="changeStatus" href="#">Status op 'Klaar' zetten</a>
-            <a class="btn btn--order btn--active status--forward" v-if=" donut.status === 'Klaar'" v-bind:id="donut._id" @click="changeStatus" href="#"></a>
+            <a class="btn btn--order btn--active status--forward" v-if=" donut.status === 'Klaar'" v-bind:id="donut._id" @click="changeStatus" href="#" style="display:none"></a>
             <br>
             <a class="btn btn--order status--back" v-if=" donut.status === 'In productie'" v-bind:id="donut._id" @click="changeStatusBack" href="#">Status terug op 'In afwachting' zetten</a>
             <a class="btn btn--order status--back" v-if=" donut.status === 'Klaar'" v-bind:id="donut._id" @click="changeStatusBack" href="#">Status terug op 'In productie' zetten</a>
-            <a class="btn btn--order status--back" v-if=" donut.status === 'In afwachting'" v-bind:id="donut._id" @click="changeStatus" href="#"></a>
+            <a class="btn btn--order status--back" v-if=" donut.status === 'In afwachting'" v-bind:id="donut._id" @click="changeStatus" href="#" style="display:none"></a>
 
         </li>
       </ul>
