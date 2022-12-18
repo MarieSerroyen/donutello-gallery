@@ -163,11 +163,11 @@ const logout = () => {
             <p class="order__info">Type kaartje: {{ donut.cardType }}</p>
             <p class="order__info order__info__description">Opmerking: {{ donut.description }}</p>
             <!-- <a class="btn btn--order" v-bind:id="donut._id" @click.prevent="changeStatus" href="#">{{ donut.status }}</a> -->
-            <p class="status">Status: {{ donut.status }}</p>
-            <a class="btn btn--order status--forward" v-if=" donut.status === 'In afwachting'" v-bind:id="donut._id" @click="changeStatus" href="#">Status op 'In productie' zetten</a>
-            <a class="btn btn--order status--forward" v-if=" donut.status === 'In productie'" v-bind:id="donut._id" @click="changeStatus" href="#">Status op 'Klaar' zetten</a>
-            <a class="btn btn--order status--forward" v-if=" donut.status === 'Klaar'" v-bind:id="donut._id" @click="changeStatus" href="#"></a>
-            <p></p>
+            <p class="order__info status">Status: {{ donut.status }}</p>
+            <a class="btn btn--order btn--active status--forward" v-if=" donut.status === 'In afwachting'" v-bind:id="donut._id" @click="changeStatus" href="#">Status op 'In productie' zetten</a>
+            <a class="btn btn--order btn--active status--forward" v-if=" donut.status === 'In productie'" v-bind:id="donut._id" @click="changeStatus" href="#">Status op 'Klaar' zetten</a>
+            <a class="btn btn--order btn--active status--forward" v-if=" donut.status === 'Klaar'" v-bind:id="donut._id" @click="changeStatus" href="#"></a>
+            <br>
             <a class="btn btn--order status--back" v-if=" donut.status === 'In productie'" v-bind:id="donut._id" @click="changeStatusBack" href="#">Status terug op 'In afwachting' zetten</a>
             <a class="btn btn--order status--back" v-if=" donut.status === 'Klaar'" v-bind:id="donut._id" @click="changeStatusBack" href="#">Status terug op 'In productie' zetten</a>
             <a class="btn btn--order status--back" v-if=" donut.status === 'In afwachting'" v-bind:id="donut._id" @click="changeStatus" href="#"></a>
@@ -301,6 +301,10 @@ h1{
 }
 
 .order__info__description{
+    margin-bottom: 20px;
+}
+
+.status{
     margin-bottom: 20px;
 }
 
